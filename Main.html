@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shvidko_Tour — Індивідуальні ЖД та автомаршрути</title>
+    <style>
+        :root {
+            --primary: #0088cc;
+            --primary-dark: #006699;
+            --bg-light: #f4f9fc;
+            --text-dark: #222222;
+            --text-gray: #555555;
+            --white: #ffffff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo-box img {
+            height: 45px;
+            border-radius: 8px;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+        .hero {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        section { padding: 60px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        .bg-gray { background: var(--bg-light); }
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            background: var(--white);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+            text-align: left;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 15px;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        td:first-child {
+            font-weight: 700;
+            color: var(--primary-dark);
+            background-color: #f8fafc;
+        }
+        .table-note {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-gray);
+        }
+        .price {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: var(--text-gray);
+        }
+        ul.features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        ul.features li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        ul.features li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        footer {
+            background: #111827;
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo-box">
+                <img src="logo.png" alt="Shvidko_Tour" onerror="this.style.display='none'">
+                Shvidko_Tour
+            </a>
+            <a href="https://t.me/Shvidko_tour_bot" target="_blank" class="btn">Замовити маршрут</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Ідеальні маршрути по Європі та Україні без переплат</h1>
+            <p>Складаємо похвилинний таймінг подорожей на поїздах, автобусах та авто. Економимо до 40% вашого бюджету та додаємо авторський історичний гід.</p>
+            <a href="https://t.me/Shvidko_tour_bot" target="_blank" class="btn">Отримати консультацію в Telegram</a>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Чому обирають Shvidko_Tour?</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🚂 Експертна ЖД-логістика</h3>
+                    <p>Знаємо розклади Укрзалізниці, швидкісних поїздів ICE, TGV та EuroCity. Підбираємо зручні стиковки та проїзні квитки зі знижками.</p>
+                </div>
+                <div class="card">
+                    <h3>⏱️ Комфортний таймінг</h3>
+                    <p>Для автотурів прораховуємо зупинки кожні 2–3 години, зручні об'їзди заторів, платні дороги та перевірені парковки біля локацій.</p>
+                </div>
+                <div class="card">
+                    <h3>🏰 Історія та «приховане золото»</h3>
+                    <p>Показуємо не лише популярні місця, а й унікальні маловідомі містечка (як-от Гослар чи замки України) з цікавими історичними фактами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray">
+        <div class="container">
+            <h2 class="section-title">Приклади наших маршрутів</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🗼 Гранд-тур «Харків — Париж» на поїздах</h3>
+                    <p>Подорож крізь усю Європу без авто та літаків за 63 години 51 хвилину. Пересадки у Перемишлі та Берліні, швидкісний поїзд ICE 9590 до столиці Франції.</p>
+                </div>
+                <div class="card">
+                    <h3>🏔️ Швейцарська казка: регіон Юнгфрау</h3>
+                    <p>Залізничний маршрут до серця Альп. Оптимальні пересадки у Франкфурті, панорамна залізниця Бернських Альп та підйом на канатних дорогах Гріндельвальда.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+      <section>
+        <div class="container">
+            <h2 class="section-title">Як обрати формат подорожі? Порівняння варіантів</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Критерій</th>
+                            <th>🚗 На машині</th>
+                            <th>🚌 На автобусі</th>
+                            <th>🚂 На поїзді</th>
+                            <th>✈️ На літаку</th>
+                            <th>🏢 З турагентством</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Вартість</td>
+                            <td><strong>Середня.</strong> Витрати йдуть лише на пальне та амортизацію авто.</td>
+                            <td><strong>Низька.</strong> Квитки на автобус зазвичай найдешевші.</td>
+                            <td><strong>Середня.</strong> Ціна залежить від класу вагона, в середньому помірна.</td>
+                            <td><strong>Висока.</strong> Авіаквитки коштують дорого, особливо з багажем.</td>
+                            <td><strong>Висока.</strong> У ціну закладена комісія та послуги організаторів.</td>
+                        </tr>
+                        <tr>
+                            <td>Форс-мажор</td>
+                            <td><strong>Майже нульовий.</strong> Ви не втрачаєте гроші за квитки і можете розвернутися додому в будь-яку секунду.</td>
+                            <td><strong>Низький.</strong> Квитки коштують дешево, тому при скасуванні втрати мінімальні.</td>
+                            <td><strong>Середній.</strong> Квитки можна здати з невеликою комісією або зійти на найближчій станції.</td>
+                            <td><strong>Високий.</strong> Неповоротні тарифи згорають, а терміновий квиток коштує дорого.</td>
+                            <td><strong>Високий.</strong> При відмові в останній момент згорає майже вся вартість туру.</td>
+                        </tr>
+                        <tr>
+                            <td>Вільний час</td>
+                            <td><strong>Високий.</strong> Ви самі вирішуєте, де і на скільки зупинитися.</td>
+                            <td><strong>Низький.</strong> Ви жорстко прив'язані до розкладу та зупинок рейсу.</td>
+                            <td><strong>Середній.</strong> У дорозі ви вільні, але прив'язані до часу відправлення.</td>
+                            <td><strong>Середній.</strong> Переліт швидкий, але багато часу йде на реєстрацію.</td>
+                            <td><strong>Майже нульовий.</strong> Уся програма та екскурсії розписані по хвилинах.</td>
+                        </tr>
+                        <tr>
+                            <td>Розмір групи</td>
+                            <td><strong>Низький.</strong> У стандартне авто вміщується до 4–5 осіб.</td>
+                            <td><strong>Середній.</strong> Обмежено кількістю вільних місць в одному салоні.</td>
+                            <td><strong>Високий.</strong> Можна легко купити квитки навіть на велику компанію.</td>
+                            <td><strong>Високий.</strong> Місткість лайнерів дозволяє летіти великою групою.</td>
+                            <td><strong>Вище середнього.</strong> Групи формуються заздалегідь (10–30 осіб).</td>
+                        </tr>
+                        <tr>
+                            <td>Час підготовки</td>
+                            <td><strong>Вище середнього.</strong> Потрібно перевірити авто, скласти маршрут і знайти житло.</td>
+                            <td><strong>Низький.</strong> Достатньо просто купити квиток на потрібний рейс.</td>
+                            <td><strong>Середній.</strong> Потрібно заздалегідь моніторити квитки та збирати речі.</td>
+                            <td><strong>Середній.</strong> Потрібне раннє бронювання та перевірка правил багажу.</td>
+                            <td><strong>Майже нульовий.</strong> Достатньо обрати тур та оплатити, решту зробить менеджер.</td>
+                        </tr>
+                        <tr>
+                            <td>Зміна маршруту</td>
+                            <td><strong>Висока.</strong> Можна звернути в будь-яке цікаве місце в будь-який момент.</td>
+                            <td><strong>Майже нулевая.</strong> Автобус їде суворо за затвердженим маршрутом.</td>
+                            <td><strong>Низька.</strong> Поїзд іде по рейках, зійти можна лише на великих станциях.</td>
+                            <td><strong>Майже нульова.</strong> Змінити точку прильоту в процесі шляху неможливо.</td>
+                            <td><strong>Майже нульова.</strong> Відхилятися від оплаченої програми туру не можна.</td>
+                        </tr>
+                        <tr>
+                            <td>Час поїздки</td>
+                            <td><strong>Вище середнього.</strong> Залежить від відстані, швидкості та зупинок.</td>
+                            <td><strong>Високий.</strong> Найдовший транспорт через затори та обмеження швидкості.</td>
+                            <td><strong>Вище середнього.</strong> Їде швидше за автобус, але повільніше за літак.</td>
+                            <td><strong>Майже нульовий.</strong> Найшвидший спосіб дістатися місця призначення.</td>
+                            <td><strong>Середній.</strong> Залежить від транспорту, але логістика зазвичай оптимізована.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">💡 <strong>Рішення від Shvidko_Tour:</strong> Ми беремо на себе весь складний «Час підготовки», зберігаючи вашу свободу та бюджет!</p>
+        </div>
+    </section>
+
+    <section class="bg-gray">
+        <div class="container">
+            <h2 class="section-title">Вартість розробки</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Тур вихідного дня</h3>
+                    <div class="price">від 350 <span>грн</span></div>
+                    <ul class="features">
+                        <li>Маршрут по Україні на 2–3 дні</li>
+                        <li>Підбір поїздів або автомаршруту</li>
+                        <li>Список цікавих локацій та кафе</li>
+                    </ul>
+                    <a href="https://t.me/Shvidko_tour_bot" target="_blank" class="btn">Замовити</a>
+                </div>
+                <div class="card">
+                    <h3>Євротур «Під ключ»</h3>
+                    <div class="price">від 600 <span>грн</span></div>
+                    <ul class="features">
+                        <li>Складний маршрут на поїздах чи авто</li>
+                        <li>Пошук дешевих тарифів та проїзних</li>
+                        <li>Підбір недорогих готелів біля станцій</li>
+                    </ul>
+                    <a href="https://t.me/Shvidko_tour_bot" target="_blank" class="btn">Замовити</a>
+                </div>
+                <div class="card">
+                    <h3>Гранд-тур (кілька країн)</h3>
+                    <div class="price">від 1 000 <span>грн</span></div>
+                    <ul class="features">
+                        <li>Похвилинний план на 7–14 днів</li>
+                        <li>Усі стиковки, кордони та віньєтки</li>
+                        <li>Детальний авторський історичний гід</li>
+                    </ul>
+                    <a href="https://t.me/Shvidko_tour_bot" target="_blank" class="btn">Замовити</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 15px;"><strong>Shvidko_Tour</strong> — ваш персональний гід та логіст. Консультуємо українською та російською мовами.</p>
+            <p>
+                <a href="https://t.me/Shvidko_tour_bot" target="_blank">Особистий Telegram-бот для замовлень</a> |
+                <a href="https://t.me/shvidko_tour" target="_blank">Наш Telegram-канал</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
